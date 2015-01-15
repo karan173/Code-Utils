@@ -1,0 +1,7 @@
+cron:
+# - description: update problem statistics and add new problems
+#   url: /tasks/update
+#   schedule: every 6 minutes
+# - description: schema migration
+#   url: /tasks/migrate
+#   schedule: every 10 minutes

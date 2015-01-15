@@ -1,0 +1,5 @@
+queue:
+- name: problem-cron-queue
+  rate: 5/s
+- name: user-cron-queue
+  rate: 5/s

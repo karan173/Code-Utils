@@ -1,0 +1,135 @@
+{# DONT FORGET TO change filename and url of any static resource YOU CHANGE because cache control is on, see app.yaml #}
+<!DOCTYPE html>
+{# this is a base template, child template should define 
+	title
+	stylesheets
+	page_content
+	scripts
+	Also this template requires variables
+		base_user
+		base_toggle_url
+#}
+{# macro for formatting a pcode with a hyperlink #}
+{% macro format_pcode(pcode) -%}
+	{# this is jinja's syntax for string concatenation #}	
+    <a href={{ "http://www.codechef.com/problems/" ~ pcode }}>{{pcode}}</a>
+{%- endmacro %}
+
+{# macro for formatting a user with a hyperlink #}
+{% macro format_user(user) -%}
+	{# this is jinja's syntax for string concatenation #}	
+    <a href={{ "http://www.codechef.com/users/" ~ user }}>{{user}}</a>
+{%- endmacro %}
+
+{# macro for printing a problem list #}
+{# no*width should be 12 #}
+{% macro format_plist(plist, no=12, width = 1) -%}
+	{% for pcode in plist %}
+		{% if loop.index0 == 0 %} <div class="row">
+		{% elif loop.index0 is divisibleby no %} </div><div class="row">
+		{% endif %}
+		<div class={{"col-md-" ~ width}}>{{format_pcode(pcode)}}</div>
+	{% endfor %}
+	{% if plist %}
+		</div>
+	{% endif %}
+{%- endmacro %}
+
+
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="google-site-verification" content="F98HgdqVpBlZQKGLoaKJmt-1RRQ5utz4O1aAV6G-wi8" /> 
+	
+	{% block other_head %}{% endblock %}
+	<title>Code-Utils : {% block title %}{% endblock %}</title>
+	<!--bootstrap css-->
+	<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	
+	{# include other stylesheets here, this is a jinja2 comment #}
+	{% block stylesheets %}{% endblock %} 
+	<style type="text/css">
+		/* Sticky footer styles
+		-------------------------------------------------- */
+		html {
+		  position: relative;
+		  min-height: 100%;
+		}
+		body {
+		  /* Margin bottom by footer height */
+		  margin-bottom: 60px;
+		}
+		#footer {
+		  position: absolute;
+		  bottom: 0;
+		  width: 100%;
+		  /* Set the fixed height of the footer here */
+		  height: 60px;
+		  background-color: #f5f5f5;
+		}
+		.container .text-muted {
+		  margin: 20px 0;
+		}
+	</style>
+</head>
+<body>
+	{# navbar #}
+		<div class="navbar navbar-inverse navbar-static-top" role="navigation">
+			<div class = "container">
+				 <!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		            <span class="sr-only">Toggle navigation</span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		            </button>
+					<a class="navbar-brand" href="/"><strong>Code-Utils</strong></a>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse">					
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="/compare"><strong>User Vs User</strong></a></li>
+						<li><a href="/about"><strong>About</strong></a></li>
+						{% if base_user %}<li><a href="/users/{{base_user.username}}"><strong>{{base_user.username}}</strong></a></li>{% endif %}
+						<li>
+							<span class="navbar-form navbar-right" >
+								<a href="{{base_toggle_url}}" style="text-decoration: none"><button type="submit" class="btn btn-default">
+								{% if base_user %}Sign Out{% else %}Sign In{% endif %}
+								</button></a>
+							</span>
+						</li>
+					</ul>
+				</div><!-- /.navbar-collapse -->
+			</div><!-- /.container-fluid -->
+		</div>		
+	{# navbar-end #}
+
+	<div class="container">
+	{% block page_content %}{% endblock %}
+	</div>
+	 <div id="footer">
+      <div class="container">
+        <p class="text-muted text-center">Powered by Python on Google App Engine. Developed by <a href = "/about">karan173</a>.</p>
+      </div>
+    </div>
+	<!--jquery-->
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<!--code for google analytics-->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-49993047-1', 'code-utils.appspot.com');
+	  ga('send', 'pageview');
+	</script>
+	{# include other scripts here #}
+	{% block scripts %}{% endblock %}
+</body>
+</html>

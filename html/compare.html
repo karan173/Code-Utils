@@ -1,0 +1,28 @@
+{% extends "/html/base.html" %}
+
+{# bootstrap and jquery are already included in base template #}
+
+{% block title %}User VS User{% endblock title %}
+
+{% block stylesheets %}
+{% endblock stylesheets %}
+{% block page_content %}
+<div class="panel panel-info">
+  <div class="panel-heading">
+  </div>
+  <div class="panel-body">
+    Here you can compare two users on codechef. 
+  </div>
+</div>
+<form action="/result" method="get" role = "form">
+	<div class="form-group">
+		<label for="user1">Enter user 1</label><input type="text" name = "user1" class="form-control" required maxlength="14" pattern="^[a-z]{1}[a-z0-9_]{3,13}$" title="Codechef-ID should match the pattern /^[a-z]{1}[a-z0-9_]{3,13}$/">
+	</div>
+	<div class="form-group">
+		<label for="user2">Enter user 2</label><input type="text" name = "user2" class="form-control" required maxlength="14" pattern="^[a-z]{1}[a-z0-9_]{3,13}$" title="Codechef-ID should match the pattern /^[a-z]{1}[a-z0-9_]{3,13}$/">
+	</div>
+	<button type="submit" class="btn btn-success">Submit</button>
+</form>
+{% endblock page_content %}
+{% block scripts %}
+{% endblock scripts %}

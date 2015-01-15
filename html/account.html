@@ -1,0 +1,44 @@
+{% extends "/html/base.html" %}
+
+{# bootstrap and jquery are already included in base template #}
+
+{% block title %}Account{% endblock title %}
+
+{% block stylesheets %}
+{% endblock stylesheets %}
+
+{% block page_content %}
+<hr>
+<div class="row">
+	<div class="col-md-3"><strong>Username:</strong></div>
+	<div class="col-md-9"> {{user.username}}</div>
+</div>
+<hr>
+<div class="row">
+	<div class="col-md-3"><strong>Codechef id:</strong></div>
+	<div class="col-md-9"> {{format_user(user.codechef_id)}}</div>
+</div>
+<hr>
+<div class="row">
+	<div class="col-md-3"><strong>To-Do Problems:</strong></div>
+	<div class="col-md-9"> {{format_plist(user.todo_list, 6, 2)}}</div>
+</div>
+<hr>
+<div class="row">
+	<div class="col-md-3"><strong>Favourite problems:</strong></div>
+	<div class="col-md-9"> {{format_plist(user.fav_problems, 6, 2)}}</div>
+</div>
+<hr>
+<div class="row">
+	<div class="col-md-3"><strong>No. of Solved Problems:</strong></div>
+	<div class="col-md-9"> {{user.get_num_solved()}}</div>
+</div>
+<hr>
+<div class="row">
+	<div class="col-md-3"><strong>Solved Problems:</strong></div>
+	<div class="col-md-9"> {{format_plist(user.solved_id_list, 6, 2)}}</div>
+</div>
+{% endblock page_content %}
+
+{% block scripts %}
+{% endblock scripts %}

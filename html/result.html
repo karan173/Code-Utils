@@ -1,0 +1,22 @@
+{% extends "/html/base.html" %}
+
+{# bootstrap and jquery are already included in base template #}
+
+{% block title %}User Comparison Results{% endblock title %}
+
+{% block stylesheets %}
+{% endblock stylesheets %}
+
+{% block page_content %}
+<hr>
+<h4 class="text-center"><strong>Problems solved by only {{format_user(user1)}}. Count : {{len1}}</strong></h4>
+{{format_plist(only1)}}
+<h4 class="text-center"><strong>Problems solved by only {{format_user(user2)}}. Count : {{len2}}</strong></h4>
+{{format_plist(only2)}}
+<h4 class="text-center"><strong>Problems solved by both {{format_user(user1)}} and {{format_user(user2)}}. Count : {{lenb}}</strong></h4>
+{{format_plist(both)}}
+
+{% endblock page_content %}
+
+{% block scripts %}
+{% endblock scripts %}

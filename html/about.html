@@ -1,0 +1,39 @@
+{% extends "/html/base.html" %}
+
+{# bootstrap and jquery are already included in base template #}
+
+{% block title %}About{% endblock title %}
+
+{% block stylesheets %}
+{% endblock stylesheets %}
+
+{% block page_content %}
+<div class="panel panel-info">
+  <div class="panel-heading">
+  About
+  </div>
+  <div class="panel-body">
+	<div class="row">
+		<div class="col-md-3">Developed by:</div>
+		<div class="col-md-9">Karandeep Bhatia</div>
+	</div>
+	<div class="row">
+		<div class="col-md-3">Email</div>
+		<div class="col-md-9"><script language="JavaScript">
+			var username = "karan173";
+			var hostname = "gmail.com";
+			var linktext = username + "@" + hostname ;
+			document.write("<a href='" + "mail" + "to:" + username + "@" + hostname + "'>" + linktext + "</a>");
+			</script>
+		</div>
+	</div>
+    <div class="row">
+    	<div class="col-md-3">Codechef</div>
+    	<div class="col-md-9"><a href="http://www.codechef.com/users/karan173">karan173</a></div>
+    </div>
+  </div>
+</div>
+{% endblock page_content %}
+
+{% block scripts %}
+{% endblock scripts %}

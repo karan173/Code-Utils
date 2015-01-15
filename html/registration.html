@@ -1,0 +1,29 @@
+{% extends "/html/base.html" %}
+
+{# bootstrap and jquery are already included in base template #}
+
+{% block title %}Registration{% endblock title %}
+
+{% block stylesheets %}
+{% endblock stylesheets %}
+
+{% block page_content %}
+<strong>
+	To complete the registration, you need to enter a valid Codechef ID. Please note that your codechef ID can't be changed, once registered.
+</strong>
+<br><br>
+		<form action="/accountform" method="post" role = "form">
+			<div class="form-group">
+				<label for="username">Enter username</label>
+				<input type="text" id = "username" name = "username" class="form-control"  required maxlength="14" pattern="^[a-z]{1}[a-z0-9_]{3,13}$" title="Username should match the pattern /^[a-z]{1}[a-z0-9_]{3,13}$/">
+			</div>
+			<div class="form-group">
+				<label for="codechef-id">Enter codechef ID</label>
+				<input type="text" id = "codechef-id" name = "codechef-id" class="form-control" required maxlength="14" pattern="^[a-z]{1}[a-z0-9_]{3,13}$" title="Codechef-ID should match the pattern /^[a-z]{1}[a-z0-9_]{3,13}$/">
+			</div>
+			 <button type="submit" class="btn btn-success">Submit</button>
+		</form>
+{% endblock page_content %}
+
+{% block scripts %}
+{% endblock scripts %}

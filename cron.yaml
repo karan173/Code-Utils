@@ -1,0 +1,12 @@
+cron:
+- description: update problem statistics and add new problems
+  url: /tasks/problemupdate
+  schedule: every 24 hours
+
+- description: update user statistics
+  url: /tasks/userupdate
+  schedule: every 24 hours
+
+- description: Daily exception report
+  url: /_ereporter?sender=karan173@gmail.com  # The sender must be an app admin.
+  schedule: every day 00:00

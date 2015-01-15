@@ -1,0 +1,13 @@
+<td><a href = "{{prob.get_url()}}"> {{prob.key.id()}}</a></td>
+						<td>{{prob.pname}}</td>
+						<td>{{prob.author}}</td>
+						<td>{{prob.submissions}}</td>
+						<td>{{prob.accuracy}}</td>
+						<!-- <td><div class="readonly-tags">{% for t in prob.tags %} {{t}} {% if not loop.last %},{% endif %}{% endfor %}</div></td> -->
+						<td>{% for t in prob.tags %}<span class="label label-info">{{t}}</span>{% if not loop.last %} {% endif %}{% endfor %}</td>
+						<td>{{prob.avg_rating}}</td> 
+						<td>{{prob.num_fav}} 
+							<td><button type="button" class="btn btn-primary update" data-toggle="modal" data-target="#myModal">
+								<span class="glyphicon glyphicon-new-window"></span>Update
+							</button>
+						</td>

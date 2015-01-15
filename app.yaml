@@ -1,0 +1,35 @@
+application: code-utils
+version: 8
+runtime: python27
+api_version: 1
+threadsafe: true
+skip_files:  #these files are not uploaded to google
+- ^SKIP                     #skip files starting with skip                      
+handlers:
+- url: /_ereporter.*
+  script: google.appengine.ext.ereporter.report_generator.application
+  login: admin
+- url: /tasks/updates
+  script: main.app
+  login: admin
+- url: /stylesheets
+  static_dir: static/css
+  expiration : "365d"
+- url: /scripts
+  static_dir: static/js
+  expiration : "365d"
+- url: /images
+  expiration : "365d"
+  static_dir: static/img
+- url: /.*
+  script: main.app
+
+builtins:
+- deferred: on
+- appstats: on
+
+libraries:
+- name: webapp2
+  version: latest
+- name: jinja2
+  version: latest
