@@ -14,4 +14,5 @@ Also following projects are used -
 <li>Bootstrap-Tags</li>
 <li>Raty</li>
 <li>Beautiful Soup 4</li>
+</ul>
 ```
