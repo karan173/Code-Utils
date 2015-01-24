@@ -7,12 +7,12 @@ This site is developed on Google App Engine using Python.
 Also following projects are used - 
 
 ```html
-<ul>
-<li>Jquery</li>
-<li>Bootstrap 3</li>
-<li>DataTables</li>
-<li>Bootstrap-Tags</li>
-<li>Raty</li>
-<li>Beautiful Soup 4</li>
-</ul>
+
+Jquery
+Bootstrap 3
+DataTables
+Bootstrap-Tags
+Raty
+Beautiful Soup 4
+
 ```
